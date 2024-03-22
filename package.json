@@ -5,8 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
-    "start": "node dist/index.js",
-    "build": "tsc --outDir dist",
+    "start": "node build/index.js",
+    "build": "tsc --outDir build",
     "prepare": "husky install",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
