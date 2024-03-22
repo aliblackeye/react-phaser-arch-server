@@ -2,8 +2,8 @@ import express from "express";
 import { Server } from "socket.io";
 import cors from "cors";
 import bodyParser from "body-parser";
-import router from "./src/routes";
-import socket from "./src/sockets/socket";
+import router from "./routes";
+import socket from "./sockets/socket";
 
 import { createServer } from "http";
 
