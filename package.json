@@ -7,7 +7,6 @@
     "dev": "nodemon",
     "start": "node dist/index.js",
     "build": "tsc --outDir dist",
-    "pre-push": "curl https://api.render.com/deploy/srv-ckmnp9k1g56c73e8bi3g?key=7wr7vWCkj18",
     "prepare": "husky install",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
