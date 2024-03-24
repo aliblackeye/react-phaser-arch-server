@@ -7,8 +7,8 @@ const onConnection = (socket: Socket) => {
   // Oyuncu bağlandığında
   players.set(socket.id, {
     playerId: socket.id,
-    x: Math.floor(Math.random() * 800),
-    y: Math.floor(Math.random() * 512),
+    x: Math.floor(Math.random() * (1920 * 2)),
+    y: Math.floor(Math.random() * (1080 * 2)),
   });
 
   // Diğer oyunculara yeni oyuncuyu ekle
