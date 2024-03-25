@@ -16,12 +16,29 @@ const onDisconnect = async (socket: any) => {
   players.delete(socket.id);
 };
 
+const checkPlayerAlreadyInGameBy = (name: string) => {
+  return Array.from(players.values()).find((player) => player.name === name);
+};
+
+const setNewPlayerName = (name: string) => {
+  let newName = name;
+  let i = 1;
+  while (checkPlayerAlreadyInGameBy(newName)) {
+    newName = `${name}${i}`;
+    i++;
+  }
+  return newName;
+};
+
 const onPlayerJoined = (socket: Socket) => {
   socket.on("joinGame", async (name) => {
     if (!name) {
       // bağlantıyı kes
       return socket.disconnect();
     }
+
+    name = setNewPlayerName(name);
+
     console.log("Player joined: ", name);
     // Oyuncu bağlandığında
     players.set(socket.id, {
@@ -34,7 +51,6 @@ const onPlayerJoined = (socket: Socket) => {
 
     // Diğer oyunculara yeni oyuncuyu ekle
     socket.broadcast.emit("newPlayer", players.get(socket.id));
-    socket.emit("test", "test");
     // Yeni oyuncuya mevcut oyuncuları gönder
     socket.emit("currentPlayers", Array.from(players.values()));
   });
