@@ -18,6 +18,10 @@ const onDisconnect = async (socket: any) => {
 
 const onPlayerJoined = (socket: Socket) => {
   socket.on("joinGame", async (name) => {
+    if (!name) {
+      // bağlantıyı kes
+      return socket.disconnect();
+    }
     console.log("Player joined: ", name);
     // Oyuncu bağlandığında
     players.set(socket.id, {
